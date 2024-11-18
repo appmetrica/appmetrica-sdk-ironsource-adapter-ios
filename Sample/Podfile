@@ -1,0 +1,7 @@
+platform :ios, '14.0'
+
+target 'Sample' do
+  use_frameworks! :linkage => :static
+
+  pod 'AppMetricaIronSourceAdapter', :path => "../", :testspecs => ['Tests']
+end
