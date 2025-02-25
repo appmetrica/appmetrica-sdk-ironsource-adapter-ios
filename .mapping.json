@@ -1,4 +1,5 @@
 {
+  ".":"mobile/metrika/ios/appmetrica-sdk/adapters/IronSource",
   ".gitignore":"mobile/metrika/ios/appmetrica-sdk/adapters/IronSource/.gitignore",
   "AppMetricaIronSourceAdapter.podspec":"mobile/metrika/ios/appmetrica-sdk/adapters/IronSource/AppMetricaIronSourceAdapter.podspec",
   "AppMetricaIronSourceAdapter/Sources/AdTypeExtension.swift":"mobile/metrika/ios/appmetrica-sdk/adapters/IronSource/AppMetricaIronSourceAdapter/Sources/AdTypeExtension.swift",
