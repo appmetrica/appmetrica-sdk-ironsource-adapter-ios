@@ -31,13 +31,13 @@ PODS:
     - AppMetricaPlatform (= 5.11.0)
     - AppMetricaStorageUtils (= 5.11.0)
     - AppMetricaSynchronization (= 5.11.0)
-  - AppMetricaIronSourceAdapter (1.1.0):
-    - AppMetricaIronSourceAdapter/Core (= 1.1.0)
-  - AppMetricaIronSourceAdapter/Core (1.1.0):
+  - AppMetricaIronSourceAdapter (1.2.0):
+    - AppMetricaIronSourceAdapter/Core (= 1.2.0)
+  - AppMetricaIronSourceAdapter/Core (1.2.0):
     - AppMetricaCore (~> 5.11)
     - AppMetricaCoreExtension (~> 5.11)
     - IronSourceSDK (~> 8.0)
-  - AppMetricaIronSourceAdapter/Tests (1.1.0):
+  - AppMetricaIronSourceAdapter/Tests (1.2.0):
     - AppMetricaIronSourceAdapter/Core
   - AppMetricaKeychain (5.11.0):
     - AppMetricaCoreUtils (= 5.11.0)
@@ -106,7 +106,7 @@ SPEC CHECKSUMS:
   AppMetricaFMDB: 856551ae318f26b7bd2147b46ad91c52745fed0a
   AppMetricaHostState: 0d93059e9a3e820e1f0a5bc9c5b25d9aaf9eb6b8
   AppMetricaIdentifiers: 1e03645ec5a839437bcc3d3cf4b79b516e865e02
-  AppMetricaIronSourceAdapter: 47a44c498647dbb0e7ec60b01f5b3ae517954af4
+  AppMetricaIronSourceAdapter: 3c3e808387ec249c14cf57d9e1ac60cbc58e7627
   AppMetricaKeychain: 23db87a250bd994aaa6103574ea8a264fcdc93e6
   AppMetricaLog: b5128f3f632dd6274e3f0ed8e9602f950b697a5a
   AppMetricaLogSwift: 28e37430577148c4da31272358b5d4b0e30abf5d
