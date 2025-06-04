@@ -68,6 +68,8 @@ public final class AppMetricaIronSourceAdapter: NSObject {
         }
 
         ironSourceProxy.add(self)
+        appMetricaProxy.registerAdRevenueNativeSource("ironsource")
+        
         isInitialized = true
         Self.generalLogger.log(
             level: .info,
@@ -130,6 +132,10 @@ public final class AppMetricaIronSourceAdapter: NSObject {
         adRevenue.adPlacementName = impressionData.placement
         adRevenue.precision = impressionData.precision
         adRevenue.adUnitName = impressionData.instance_name
+        adRevenue.payload = [
+            "layer": "native",
+            "source": "ironsource",
+        ]
 
         Self.impressionsLogger.log(
             level: .debug,

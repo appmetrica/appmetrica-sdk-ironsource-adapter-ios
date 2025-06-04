@@ -18,8 +18,8 @@ Pod::Spec.new do |s|
     core.source_files = "#{s.name}/Sources/**/*.{swift}"
     core.resource_bundles = { s.name => "#{s.name}/Sources/Resources/PrivacyInfo.xcprivacy" }
     
-    core.dependency 'AppMetricaCore', '~> 5.8'
-    core.dependency 'AppMetricaCoreExtension', '~> 5.8'
+    core.dependency 'AppMetricaCore', '~> 5.11'
+    core.dependency 'AppMetricaCoreExtension', '~> 5.11'
     core.dependency 'IronSourceSDK', '~> 8.0'
   end
 

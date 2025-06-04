@@ -22,9 +22,15 @@ class AppMetricaIronSourceAdapterTests: XCTestCase {
         XCTAssertTrue(called, "AppMetrica.add should be called during initialization")
     }
 
-    func testInitialize() {
+    func testInitialize() async {
         adapter.initialize()
         XCTAssertTrue(MockIronSource.addCalled, "IronSource.add should be called during initialization")
+        
+        let registerSourceCalled = await MockAppMetrica.registerSourceCalled
+        XCTAssertTrue(registerSourceCalled, "AppMetrica.registerSource should be called")
+        
+        let registerSources = await MockAppMetrica.registerSources
+        XCTAssertEqual(registerSources, ["ironsource"])
     }
 
     func testDoubleInitialization() {

@@ -62,12 +62,18 @@ class MockAppMetrica: AppMetrica {
         private(set) var reportAdRevenueCalled: Bool = false
         private(set) var reportedAdRevenues: [AdRevenueInfo] = []
         private(set) var reportAdRevenueCallCount: Int = 0
+        private(set) var registerSourceCalled: Bool = false
+        private(set) var registerSources: [String] = []
+        private(set) var registerSourceCallCount: Int = 0
 
         func reset() {
             addCalled = false
             reportAdRevenueCalled = false
             reportedAdRevenues.removeAll()
             reportAdRevenueCallCount = 0
+            registerSourceCalled = false
+            registerSourceCallCount = 0
+            registerSources.removeAll()
         }
 
         func setAddCalled() {
@@ -78,6 +84,12 @@ class MockAppMetrica: AppMetrica {
             reportAdRevenueCalled = true
             reportedAdRevenues.append(adRevenue)
             reportAdRevenueCallCount += 1
+        }
+        
+        func registerSourceCalled(_ src: String) {
+            registerSourceCalled = true
+            registerSources.append(src)
+            registerSourceCallCount += 1
         }
     }
 
@@ -97,6 +109,17 @@ class MockAppMetrica: AppMetrica {
         _isActivated = false
         await state.reset()
     }
+    
+    override class func registerAdRevenueNativeSource(_ source: String) {
+        let semaphore = DispatchSemaphore(value: 0)
+        
+        Task {
+            await state.registerSourceCalled(source)
+            semaphore.signal()
+        }
+        
+        semaphore.wait()
+    }
 
     override class func add(_ delegate: any ModuleActivationDelegate.Type) {
         Task {
@@ -109,6 +132,24 @@ class MockAppMetrica: AppMetrica {
     ) {
         Task {
             await state.reportAdRevenue(adRevenue)
+        }
+    }
+    
+    static var registerSourceCalled: Bool {
+        get async {
+            await state.registerSourceCalled
+        }
+    }
+    
+    static var registerSourceCallCount: Int {
+        get async {
+            await state.registerSourceCallCount
+        }
+    }
+    
+    static var registerSources: [String] {
+        get async {
+            await state.registerSources
         }
     }
 
