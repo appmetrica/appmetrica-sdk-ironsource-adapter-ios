@@ -85,10 +85,8 @@ public final class AppMetricaIronSourceAdapter: NSObject {
     private var isInitialized = false
     private let initializationLock = NSLock()
 
-    private static let generalLogger = Logger(
-        subsystem: "io.appmetrica.IronSourceAdapter", category: .general)
-    private static let impressionsLogger = Logger(
-        subsystem: "io.appmetrica.IronSourceAdapter", category: .impressions)
+    private static let generalLogger = Logger(category: .general)
+    private static let impressionsLogger = Logger(category: .impressions)
 
     private let ironSourceProxy: IronSource.Type
     private let appMetricaProxy: AppMetrica.Type
@@ -138,7 +136,7 @@ public final class AppMetricaIronSourceAdapter: NSObject {
         ]
 
         Self.impressionsLogger.log(
-            level: .debug,
+            level: .info,
             message:
                 "Processing impression data: revenue=\(revenue), adType=\(adRevenue.adType.rawValue), adNetwork=\(adRevenue.adNetwork ?? "unknown")"
         )
@@ -154,7 +152,7 @@ extension AppMetricaIronSourceAdapter: ISImpressionDataDelegate {
         }
 
         Self.impressionsLogger.log(
-            level: .debug, message: "Received impression data: \(impressionData)")
+            level: .info, message: "Received impression data: \(impressionData)")
 
         Task {
             await impressionQueue.enqueue(impressionData)

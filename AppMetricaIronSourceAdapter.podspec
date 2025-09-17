@@ -20,6 +20,8 @@ Pod::Spec.new do |s|
     
     core.dependency 'AppMetricaCore', '~> 5.11'
     core.dependency 'AppMetricaCoreExtension', '~> 5.11'
+    core.dependency 'AppMetricaLog', '~> 5.11'
+    core.dependency 'AppMetricaLogSwift', '~> 5.11'
     core.dependency 'IronSourceSDK', '~> 8.0'
   end
 
