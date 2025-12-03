@@ -73,6 +73,12 @@ class AppMetricaIronSourceAdapterTests: XCTestCase {
             XCTAssertEqual(firstRevenue.adPlacementName, "TestPlacement")
             XCTAssertEqual(firstRevenue.precision, "Precise")
             XCTAssertEqual(firstRevenue.adUnitName, "TestInstance")
+            XCTAssertEqual(firstRevenue.payload, [
+                "layer": "native",
+                "source": "ironsource",
+                "original_source": "ad-revenue-ironsource-v8",
+                "original_ad_type": ISAdUnit.is_AD_UNIT_REWARDED_VIDEO().value,
+            ])
         } else {
             XCTFail("No ad revenue reported")
         }

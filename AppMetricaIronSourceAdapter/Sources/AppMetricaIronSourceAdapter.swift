@@ -133,6 +133,8 @@ public final class AppMetricaIronSourceAdapter: NSObject {
         adRevenue.payload = [
             "layer": "native",
             "source": "ironsource",
+            "original_source": "ad-revenue-ironsource-v8",
+            "original_ad_type": impressionData.ad_unit ?? "null",
         ]
 
         Self.impressionsLogger.log(
