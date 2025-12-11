@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'AppMetricaIronSourceAdapter'
-  s.version          = '1.2.0'
+  s.version          = '2.0.0'
   s.summary          = 'AppMetrica adapter for IronSource SDK'
   s.homepage         = 'https://appmetrica.io'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
@@ -22,12 +22,12 @@ Pod::Spec.new do |s|
     core.dependency 'AppMetricaCoreExtension', '~> 5.11'
     core.dependency 'AppMetricaLog', '~> 5.11'
     core.dependency 'AppMetricaLogSwift', '~> 5.11'
-    core.dependency 'IronSourceSDK', '~> 8.0'
+    core.dependency 'IronSourceSDK', '~> 9.0'
   end
 
   s.test_spec 'Tests' do |test_spec|
-      test_spec.source_files = 'AppMetricaIronSourceAdapter/Tests/**/*.swift'
+      test_spec.source_files = "#{s.name}/Tests/**/*.swift"
       
-      test_spec.dependency 'AppMetricaIronSourceAdapter/Core'
+      test_spec.dependency "#{s.name}/Core"
   end
 end

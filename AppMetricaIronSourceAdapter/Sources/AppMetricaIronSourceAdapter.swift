@@ -74,7 +74,7 @@ public final class AppMetricaIronSourceAdapter: NSObject {
         Self.generalLogger.log(
             level: .info,
             message:
-                "AppMetricaIronSourceAdapter initialized with IronSource SDK version: \(IronSource.sdkVersion())"
+                "AppMetricaIronSourceAdapter initialized with IronSource SDK version: \(LevelPlay.sdkVersion())"
         )
     }
 
@@ -88,11 +88,11 @@ public final class AppMetricaIronSourceAdapter: NSObject {
     private static let generalLogger = Logger(category: .general)
     private static let impressionsLogger = Logger(category: .impressions)
 
-    private let ironSourceProxy: IronSource.Type
+    private let ironSourceProxy: LevelPlay.Type
     private let appMetricaProxy: AppMetrica.Type
 
     internal init(
-        ironSourceType: IronSource.Type = IronSource.self,
+        ironSourceType: LevelPlay.Type = LevelPlay.self,
         appMetricaType: AppMetrica.Type = AppMetrica.self
     ) {
         self.ironSourceProxy = ironSourceType
@@ -114,7 +114,7 @@ public final class AppMetricaIronSourceAdapter: NSObject {
         }
     }
 
-    private func processImpressionData(_ impressionData: ISImpressionData) {
+    private func processImpressionData(_ impressionData: LPMImpressionData) {
         guard let revenue = impressionData.revenue?.doubleValue else {
             Self.impressionsLogger.log(level: .error, message: "Impression revenue is nil")
             return
@@ -125,16 +125,17 @@ public final class AppMetricaIronSourceAdapter: NSObject {
             currency: "USD"
         )
 
-        adRevenue.adType = AdType(adUnit: impressionData.ad_unit)
-        adRevenue.adNetwork = impressionData.ad_network
+        adRevenue.adType = AdType(adUnit: impressionData.adFormat)
+        adRevenue.adNetwork = impressionData.adNetwork
         adRevenue.adPlacementName = impressionData.placement
         adRevenue.precision = impressionData.precision
-        adRevenue.adUnitName = impressionData.instance_name
+        adRevenue.adUnitID = impressionData.mediationAdUnitId
+        adRevenue.adUnitName = impressionData.mediationAdUnitName
         adRevenue.payload = [
             "layer": "native",
             "source": "ironsource",
-            "original_source": "ad-revenue-ironsource-v8",
-            "original_ad_type": impressionData.ad_unit ?? "null",
+            "original_source": "ad-revenue-ironsource-v9",
+            "original_ad_type": impressionData.adFormat ?? "null",
         ]
 
         Self.impressionsLogger.log(
@@ -142,12 +143,12 @@ public final class AppMetricaIronSourceAdapter: NSObject {
             message:
                 "Processing impression data: revenue=\(revenue), adType=\(adRevenue.adType.rawValue), adNetwork=\(adRevenue.adNetwork ?? "unknown")"
         )
-        appMetricaProxy.reportAdRevenue(adRevenue)
+        appMetricaProxy.reportAdRevenue(adRevenue, isAutocollected: true)
     }
 }
 
-extension AppMetricaIronSourceAdapter: ISImpressionDataDelegate {
-    public func impressionDataDidSucceed(_ impressionData: ISImpressionData!) {
+extension AppMetricaIronSourceAdapter: LPMImpressionDataDelegate {
+    public func impressionDataDidSucceed(_ impressionData: LPMImpressionData!) {
         guard let impressionData = impressionData else {
             Self.impressionsLogger.log(level: .error, message: "Impression data is nil")
             return

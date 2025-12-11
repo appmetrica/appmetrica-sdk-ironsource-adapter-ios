@@ -27,6 +27,7 @@
   "Sample/Sample/Resources/Preview Content/Preview Assets.xcassets/Contents.json":"mobile/metrika/ios/appmetrica-sdk/adapters/IronSource/Sample/Sample/Resources/Preview Content/Preview Assets.xcassets/Contents.json",
   "Sample/Sample/Sample-Info.plist":"mobile/metrika/ios/appmetrica-sdk/adapters/IronSource/Sample/Sample/Sample-Info.plist",
   "Sample/Sample/Sources/ContentView.swift":"mobile/metrika/ios/appmetrica-sdk/adapters/IronSource/Sample/Sample/Sources/ContentView.swift",
+  "Sample/Sample/Sources/ImpressionDataKeys.swift":"mobile/metrika/ios/appmetrica-sdk/adapters/IronSource/Sample/Sample/Sources/ImpressionDataKeys.swift",
   "Sample/Sample/Sources/SampleApp.swift":"mobile/metrika/ios/appmetrica-sdk/adapters/IronSource/Sample/Sample/Sources/SampleApp.swift",
   "THIRD PARTY LICENSES":"mobile/metrika/ios/appmetrica-sdk/adapters/IronSource/THIRD PARTY LICENSES"
 }

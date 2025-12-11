@@ -46,12 +46,13 @@ class AppMetricaIronSourceAdapterTests: XCTestCase {
 
     func testImpressionDataProcessing() async throws {
         let impressionData = MockISImpressionData(
-            adUnit: ISAdUnit.is_AD_UNIT_REWARDED_VIDEO().value,
+            adUnit: "rewarded_video",
             revenue: NSNumber(value: 1.0),
             adNetwork: "TestNetwork",
             placement: "TestPlacement",
             precision: "Precise",
-            instanceName: "TestInstance"
+            mediationAdUnitName: "AdUnitName",
+            mediationAdUnitId: "AdUnitId"
         )
 
         MockAppMetrica.setIsActivated(true)
@@ -72,12 +73,13 @@ class AppMetricaIronSourceAdapterTests: XCTestCase {
             XCTAssertEqual(firstRevenue.adNetwork, "TestNetwork")
             XCTAssertEqual(firstRevenue.adPlacementName, "TestPlacement")
             XCTAssertEqual(firstRevenue.precision, "Precise")
-            XCTAssertEqual(firstRevenue.adUnitName, "TestInstance")
+            XCTAssertEqual(firstRevenue.adUnitName, "AdUnitName")
+            XCTAssertEqual(firstRevenue.adUnitID, "AdUnitId")
             XCTAssertEqual(firstRevenue.payload, [
                 "layer": "native",
                 "source": "ironsource",
-                "original_source": "ad-revenue-ironsource-v8",
-                "original_ad_type": ISAdUnit.is_AD_UNIT_REWARDED_VIDEO().value,
+                "original_source": "ad-revenue-ironsource-v9",
+                "original_ad_type": "rewarded_video",
             ])
         } else {
             XCTFail("No ad revenue reported")
@@ -86,12 +88,13 @@ class AppMetricaIronSourceAdapterTests: XCTestCase {
 
     func testImpressionDataProcessingWithNilRevenue() async throws {
         let impressionData = MockISImpressionData(
-            adUnit: ISAdUnit.is_AD_UNIT_REWARDED_VIDEO().value,
+            adUnit: "rewarded_video",
             revenue: nil,
             adNetwork: "TestNetwork",
             placement: "TestPlacement",
             precision: "Precise",
-            instanceName: "TestInstance"
+            mediationAdUnitName: "AdUnitName",
+            mediationAdUnitId: "AdUnitId"
         )
 
         MockAppMetrica.setIsActivated(true)
@@ -106,12 +109,13 @@ class AppMetricaIronSourceAdapterTests: XCTestCase {
 
     func testImpressionDataProcessingWithZeroRevenue() async throws {
         let impressionData = MockISImpressionData(
-            adUnit: ISAdUnit.is_AD_UNIT_REWARDED_VIDEO().value,
+            adUnit: "rewarded_video",
             revenue: NSNumber(value: 0.0),
             adNetwork: "TestNetwork",
             placement: "TestPlacement",
             precision: "Precise",
-            instanceName: "TestInstance"
+            mediationAdUnitName: "AdUnitName",
+            mediationAdUnitId: "AdUnitId"
         )
 
         MockAppMetrica.setIsActivated(true)
@@ -133,7 +137,8 @@ class AppMetricaIronSourceAdapterTests: XCTestCase {
             adNetwork: "TestNetwork",
             placement: "TestPlacement",
             precision: "Precise",
-            instanceName: "TestInstance"
+            mediationAdUnitName: "AdUnitName",
+            mediationAdUnitId: "AdUnitId"
         )
 
         MockAppMetrica.setIsActivated(true)
@@ -156,7 +161,8 @@ class AppMetricaIronSourceAdapterTests: XCTestCase {
             adNetwork: "TestNetwork",
             placement: "TestPlacement",
             precision: "Precise",
-            instanceName: "TestInstance"
+            mediationAdUnitName: "AdUnitName",
+            mediationAdUnitId: "AdUnitId"
         )
 
         MockAppMetrica.setIsActivated(true)
@@ -174,12 +180,13 @@ class AppMetricaIronSourceAdapterTests: XCTestCase {
 
     func testImpressionDataProcessingWhenAppMetricaNotActivated() async throws {
         let impressionData = MockISImpressionData(
-            adUnit: ISAdUnit.is_AD_UNIT_REWARDED_VIDEO().value,
+            adUnit: "rewarded_video",
             revenue: NSNumber(value: 1.0),
             adNetwork: "TestNetwork",
             placement: "TestPlacement",
             precision: "Precise",
-            instanceName: "TestInstance"
+            mediationAdUnitName: "AdUnitName",
+            mediationAdUnitId: "AdUnitId"
         )
 
         MockAppMetrica.setIsActivated(false)
@@ -232,21 +239,23 @@ class AppMetricaIronSourceAdapterTests: XCTestCase {
 
         // Queue some impression data
         let impressionData1 = MockISImpressionData(
-            adUnit: ISAdUnit.is_AD_UNIT_REWARDED_VIDEO().value,
+            adUnit: "rewarded_video",
             revenue: NSNumber(value: 1.0),
             adNetwork: "TestNetwork1",
             placement: "TestPlacement1",
             precision: "Precise",
-            instanceName: "TestInstance1"
+            mediationAdUnitName: "AdUnitName1",
+            mediationAdUnitId: "AdUnitId1"
         )
 
         let impressionData2 = MockISImpressionData(
-            adUnit: ISAdUnit.is_AD_UNIT_INTERSTITIAL().value,
+            adUnit: "interstitial",
             revenue: NSNumber(value: 2.0),
             adNetwork: "TestNetwork2",
             placement: "TestPlacement2",
             precision: "Precise",
-            instanceName: "TestInstance2"
+            mediationAdUnitName: "AdUnitName2",
+            mediationAdUnitId: "AdUnitId2"
         )
 
         // Simulate queueing impression data when AppMetrica is not activated
@@ -284,8 +293,8 @@ class AppMetricaIronSourceAdapterTests: XCTestCase {
                 currency: "USD",
                 adType: .rewarded,
                 adNetwork: "TestNetwork1",
-                adUnitID: nil,
-                adUnitName: "TestInstance1",
+                adUnitID: "AdUnitId1",
+                adUnitName: "AdUnitName1",
                 adPlacementID: nil,
                 adPlacementName: "TestPlacement1",
                 precision: "Precise"),
@@ -294,8 +303,8 @@ class AppMetricaIronSourceAdapterTests: XCTestCase {
                 currency: "USD",
                 adType: .interstitial,
                 adNetwork: "TestNetwork2",
-                adUnitID: nil,
-                adUnitName: "TestInstance2",
+                adUnitID: "AdUnitId2",
+                adUnitName: "AdUnitName2",
                 adPlacementID: nil,
                 adPlacementName: "TestPlacement2",
                 precision: "Precise"),
@@ -329,12 +338,13 @@ class AppMetricaIronSourceAdapterTests: XCTestCase {
 
         DispatchQueue.concurrentPerform(iterations: 100) { index in
             let impressionData = MockISImpressionData(
-                adUnit: ISAdUnit.is_AD_UNIT_REWARDED_VIDEO().value,
+                adUnit: "rewarded_video",
                 revenue: NSNumber(value: Double(index)),
                 adNetwork: "TestNetwork",
                 placement: "TestPlacement",
                 precision: "Precise",
-                instanceName: "TestInstance"
+                mediationAdUnitName: "AdUnitName",
+                mediationAdUnitId: "AdUnitId"
             )
 
             self.adapter.impressionDataDidSucceed(impressionData)
@@ -356,12 +366,13 @@ class AppMetricaIronSourceAdapterTests: XCTestCase {
         MockAppMetrica.setIsActivated(false)
 
         let impressionData = MockISImpressionData(
-            adUnit: ISAdUnit.is_AD_UNIT_REWARDED_VIDEO().value,
+            adUnit: "rewarded_video",
             revenue: NSNumber(value: 1.0),
             adNetwork: "TestNetwork",
             placement: "TestPlacement",
             precision: "Precise",
-            instanceName: "TestInstance"
+            mediationAdUnitName: "AdUnitName",
+            mediationAdUnitId: "AdUnitId"
         )
 
         let processingTask = Task {
@@ -389,10 +400,10 @@ class AppMetricaIronSourceAdapterTests: XCTestCase {
         MockAppMetrica.setIsActivated(true)
 
         let testCases: [(adUnit: String?, expectedAdType: AdType)] = [
-            (ISAdUnit.is_AD_UNIT_REWARDED_VIDEO().value, .rewarded),
-            (ISAdUnit.is_AD_UNIT_INTERSTITIAL().value, .interstitial),
-            (ISAdUnit.is_AD_UNIT_BANNER().value, .banner),
-            (ISAdUnit.is_AD_UNIT_NATIVE_AD().value, .native),
+            ("rewarded_video", .rewarded),
+            ("interstitial", .interstitial),
+            ("banner", .banner),
+//            ("native_ad", .native),
             ("other_ad_unit", .other),
             (nil, .unknown)
         ]
@@ -404,7 +415,8 @@ class AppMetricaIronSourceAdapterTests: XCTestCase {
                 adNetwork: "TestNetwork\(index)",
                 placement: "TestPlacement\(index)",
                 precision: "TestPrecision\(index)",
-                instanceName: "TestInstance\(index)"
+                mediationAdUnitName: "TestAdUnitName\(index)",
+                mediationAdUnitId: "TestAdUnitId\(index)"
             )
 
             adapter.impressionDataDidSucceed(impressionData)
@@ -421,7 +433,8 @@ class AppMetricaIronSourceAdapterTests: XCTestCase {
                 XCTAssertEqual(lastReportedAdRevenue.adNetwork, "TestNetwork\(index)", "Incorrect ad network")
                 XCTAssertEqual(lastReportedAdRevenue.adPlacementName, "TestPlacement\(index)", "Incorrect placement name")
                 XCTAssertEqual(lastReportedAdRevenue.precision, "TestPrecision\(index)", "Incorrect precision")
-                XCTAssertEqual(lastReportedAdRevenue.adUnitName, "TestInstance\(index)", "Incorrect instance name")
+                XCTAssertEqual(lastReportedAdRevenue.adUnitName, "TestAdUnitName\(index)", "Incorrect instance name")
+                XCTAssertEqual(lastReportedAdRevenue.adUnitID, "TestAdUnitId\(index)", "Incorrect instance name")
             } else {
                 XCTFail("No ad revenue reported for test case \(index)")
             }

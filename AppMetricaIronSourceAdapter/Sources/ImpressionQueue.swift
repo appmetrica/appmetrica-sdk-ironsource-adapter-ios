@@ -2,13 +2,13 @@ import Foundation
 import IronSource
 
 actor ImpressionQueue {
-    private var queue: [ISImpressionData] = []
+    private var queue: [LPMImpressionData] = []
     
-    func enqueue(_ impressionData: ISImpressionData) {
+    func enqueue(_ impressionData: LPMImpressionData) {
         queue.append(impressionData)
     }
     
-    func dequeueAll() -> [ISImpressionData] {
+    func dequeueAll() -> [LPMImpressionData] {
         defer { queue.removeAll(keepingCapacity: true) }
         return queue
     }

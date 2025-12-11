@@ -30,7 +30,7 @@ extension AdRevenueInfo {
     }
 }
 
-class MockIronSource: IronSource {
+class MockIronSource: LevelPlay {
     static var addCalled = false
     static var removeCalled = false
 
@@ -39,11 +39,11 @@ class MockIronSource: IronSource {
         removeCalled = false
     }
 
-    override open class func add(_ delegate: any ISImpressionDataDelegate) {
+    override open class func add(_ delegate: any LPMImpressionDataDelegate) {
         addCalled = true
     }
 
-    override open class func remove(_ delegate: any ISImpressionDataDelegate) {
+    override open class func remove(_ delegate: any LPMImpressionDataDelegate) {
         removeCalled = true
     }
 
@@ -135,6 +135,16 @@ class MockAppMetrica: AppMetrica {
         }
     }
     
+    override class func reportAdRevenue(
+        _ adRevenue: AdRevenueInfo,
+        isAutocollected: Bool,
+        onFailure: ((any Error) -> Void)? = nil
+    ) {
+        Task {
+            await state.reportAdRevenue(adRevenue)
+        }
+    }
+    
     static var registerSourceCalled: Bool {
         get async {
             await state.registerSourceCalled
@@ -178,24 +188,26 @@ class MockAppMetrica: AppMetrica {
     }
 }
 
-class MockISImpressionData: ISImpressionData {
-    let mockAdUnit: String?
+class MockISImpressionData: LPMImpressionData {
+    let mockAdFormat: String?
     let mockRevenue: NSNumber?
     let mockAdNetwork: String?
     let mockPlacement: String?
     let mockPrecision: String?
-    let mockInstanceName: String?
+    let mockMediationAdUnitName: String?
+    let mockMediationAdUnitId: String?
 
     init(
         adUnit: String?, revenue: NSNumber?, adNetwork: String?, placement: String?, precision: String?,
-        instanceName: String?
+        mediationAdUnitName: String?, mediationAdUnitId: String?
     ) {
-        self.mockAdUnit = adUnit
+        self.mockAdFormat = adUnit
         self.mockRevenue = revenue
         self.mockAdNetwork = adNetwork
         self.mockPlacement = placement
         self.mockPrecision = precision
-        self.mockInstanceName = instanceName
+        self.mockMediationAdUnitName = mediationAdUnitName
+        self.mockMediationAdUnitId = mediationAdUnitId
         super.init()
     }
 
@@ -203,10 +215,11 @@ class MockISImpressionData: ISImpressionData {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override var ad_unit: String? { return mockAdUnit }
+    override var adFormat: String? { return mockAdFormat }
     override var revenue: NSNumber? { return mockRevenue }
-    override var ad_network: String? { return mockAdNetwork }
+    override var adNetwork: String? { return mockAdNetwork }
     override var placement: String? { return mockPlacement }
     override var precision: String? { return mockPrecision }
-    override var instance_name: String? { return mockInstanceName }
+    override var mediationAdUnitName: String? { return mockMediationAdUnitName }
+    override var mediationAdUnitId: String? { return mockMediationAdUnitId }
 }

@@ -3,22 +3,21 @@ import IronSource
 import os.log
 
 extension AdType {
+    
+    private static let adUnitRewarded = "rewarded_video";
+    private static let adUnitInterstitial = "interstitial";
+    private static let adUnitBanner = "banner";
+    
     init(adUnit: String?) {
-        guard let adUnit = adUnit else {
-            self = .unknown
-            return
-        }
-        
-        switch adUnit
-        {
-        case ISAdUnit.is_AD_UNIT_REWARDED_VIDEO().value:
+        switch adUnit {
+        case Self.adUnitRewarded:
             self = .rewarded
-        case ISAdUnit.is_AD_UNIT_INTERSTITIAL().value:
+        case Self.adUnitInterstitial:
             self = .interstitial
-        case ISAdUnit.is_AD_UNIT_BANNER().value:
+        case Self.adUnitBanner:
             self = .banner
-        case ISAdUnit.is_AD_UNIT_NATIVE_AD().value:
-            self = .native
+        case nil:
+            self = .unknown
         default:
             self = .other
         }

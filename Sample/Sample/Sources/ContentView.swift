@@ -4,7 +4,7 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var auctionId = "test_auction_id"
-    @State private var adUnit = ISAdUnit.is_AD_UNIT_BANNER().value
+    @State private var adFormat = "rewarded_video"
     @State private var adNetwork = "test_network"
     @State private var instanceName = "test_instance"
     @State private var instanceId = "test_id"
@@ -22,10 +22,9 @@ struct ContentView: View {
     @State private var impressionsSent = 0
     
     let adUnits = [
-        ISAdUnit.is_AD_UNIT_REWARDED_VIDEO().value,
-        ISAdUnit.is_AD_UNIT_INTERSTITIAL().value,
-        ISAdUnit.is_AD_UNIT_BANNER().value,
-        ISAdUnit.is_AD_UNIT_NATIVE_AD().value,
+        "rewarded_video",
+        "interstitial",
+        "banner",
     ]
     
     var body: some View {
@@ -38,7 +37,7 @@ struct ContentView: View {
                     }
                     HStack {
                         Text("Ad Unit").frame(width: 120, alignment: .leading)
-                        Picker("", selection: $adUnit) {
+                        Picker("", selection: $adFormat) {
                             ForEach(adUnits, id: \.self) { unit in
                                 Text(unit).tag(unit)
                             }
@@ -118,9 +117,10 @@ struct ContentView: View {
     }
     
     private func sendImpressionData() {
-        let impressionData = ISImpressionData(dictionary: [
+        let impressionData = LPMImpressionData(dictionary: [
             kImpressionDataKeyAuctionId: auctionId,
-            kImpressionDataKeyAdUnit: adUnit,
+            kImpressionDataKeyAdFormat: adFormat,
+            kImpressionDataKeyAdUnit: adFormat,
             kImpressionDataKeyAdNetwork: adNetwork,
             kImpressionDataKeyInstanceName: instanceName,
             kImpressionDataKeyInstanceId: instanceId,
