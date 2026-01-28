@@ -1,8 +1,30 @@
 platform :ios, '14.0'
 
+def addAppMetricaSourcePods
+  appmetrica_root = ENV['APP_METRICA_ROOT'] || '../../../public'
+
+  pod 'AppMetricaCore', :path => appmetrica_root
+  pod 'AppMetricaCoreExtension', :path => appmetrica_root
+  pod 'AppMetricaLog', :path => appmetrica_root
+  pod 'AppMetricaLogSwift', :path => appmetrica_root
+  pod 'AppMetricaKeychain', :path => appmetrica_root
+  pod 'AppMetricaProtobufUtils', :path => appmetrica_root
+  pod 'AppMetricaIdentifiers', :path => appmetrica_root
+  pod 'AppMetricaHostState', :path => appmetrica_root
+  pod 'AppMetricaCoreUtils', :path => appmetrica_root
+  pod 'AppMetricaStorageUtils', :path => appmetrica_root
+  pod 'AppMetricaProtobuf', :path => appmetrica_root
+  pod 'AppMetricaPlatform', :path => appmetrica_root
+  pod 'AppMetricaEncodingUtils', :path => appmetrica_root
+  pod 'AppMetricaFMDB', :path => appmetrica_root
+  pod 'AppMetricaSynchronization', :path => appmetrica_root
+  pod 'AppMetricaNetwork', :path => appmetrica_root
+end
+
 target 'Sample' do
   use_frameworks! :linkage => :static
 
   pod 'IronSourceSDK', '~> 9.0.0'
   pod 'AppMetricaIronSourceAdapter', :path => "../", :testspecs => ['Tests']
+  addAppMetricaSourcePods
 end
