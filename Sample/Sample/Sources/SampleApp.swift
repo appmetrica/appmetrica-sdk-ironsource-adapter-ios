@@ -8,8 +8,8 @@ let levelPlayerDemoAppKey = "8545d445"
 @main
 struct SampleApp: App {
     init() {
-        AppMetricaIronSourceAdapter.isLoggingEnabled = true
-        AppMetricaIronSourceAdapter.shared.initialize()
+        AnalyticsIronSourceAdapter.isLoggingEnabled = true
+        AnalyticsIronSourceAdapter.shared.initialize()
         
         let requestBuilder = LPMInitRequestBuilder(appKey: levelPlayerDemoAppKey)
         let initRequest = requestBuilder.build()

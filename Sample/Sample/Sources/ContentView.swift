@@ -135,7 +135,7 @@ struct ContentView: View {
             kImpressionDataKeyConversionValue: NSNumber(value: Int(conversionValue) ?? 0),
         ])
         
-        AppMetricaIronSourceAdapter.shared.impressionDataDidSucceed(impressionData)
+        AnalyticsIronSourceAdapter.shared.impressionDataDidSucceed(impressionData)
         impressionsSent += 1
         lastAction = "Sent impression data #\(impressionsSent)"
     }

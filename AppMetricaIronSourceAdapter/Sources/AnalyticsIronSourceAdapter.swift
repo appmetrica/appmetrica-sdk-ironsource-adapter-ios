@@ -9,15 +9,15 @@ import os.log
 /// This adapter allows you to track ad revenue from IronSource in AppMetrica.
 /// It handles the integration between IronSource's impression data and AppMetrica's
 /// ad revenue reporting system.
-@objc(AMAAppMetricaIronSourceAdapter)
-public final class AppMetricaIronSourceAdapter: NSObject {
+@objc(AMAAnalyticsIronSourceAdapter)
+public final class AnalyticsIronSourceAdapter: NSObject {
 
     /// The shared instance of the AppMetricaIronSourceAdapter.
     ///
     /// Use this property to access the singleton instance of the adapter.
     /// This ensures that only one instance of the adapter is used throughout your app.
     @objc(sharedInstance)
-    public static let shared = AppMetricaIronSourceAdapter()
+    public static let shared = AnalyticsIronSourceAdapter()
 
     /// Controls whether debug logging is enabled for this adapter.
     ///
@@ -79,7 +79,7 @@ public final class AppMetricaIronSourceAdapter: NSObject {
     }
 
     // Internal property for dependency injection in tests
-    internal static var _shared: AppMetricaIronSourceAdapter = shared
+    internal static var _shared: AnalyticsIronSourceAdapter = shared
 
     private let impressionQueue = ImpressionQueue()
     private var isInitialized = false
@@ -147,7 +147,7 @@ public final class AppMetricaIronSourceAdapter: NSObject {
     }
 }
 
-extension AppMetricaIronSourceAdapter: LPMImpressionDataDelegate {
+extension AnalyticsIronSourceAdapter: LPMImpressionDataDelegate {
     public func impressionDataDidSucceed(_ impressionData: LPMImpressionData!) {
         guard let impressionData = impressionData else {
             Self.impressionsLogger.log(level: .error, message: "Impression data is nil")
@@ -166,7 +166,7 @@ extension AppMetricaIronSourceAdapter: LPMImpressionDataDelegate {
     }
 }
 
-extension AppMetricaIronSourceAdapter: ModuleActivationDelegate {
+extension AnalyticsIronSourceAdapter: ModuleActivationDelegate {
     public static func willActivate(with configuration: ModuleActivationConfiguration) {
         // No implementation needed
     }

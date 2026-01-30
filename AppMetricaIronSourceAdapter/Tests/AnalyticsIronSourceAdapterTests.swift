@@ -4,17 +4,17 @@ import XCTest
 
 @testable import AppMetricaIronSourceAdapter
 
-class AppMetricaIronSourceAdapterTests: XCTestCase {
-    var adapter: AppMetricaIronSourceAdapter!
+class AnalyticsIronSourceAdapterTests: XCTestCase {
+    var adapter: AnalyticsIronSourceAdapter!
 
     override func setUp() async throws {
         try await super.setUp()
         await MockAppMetrica.reset()
         MockIronSource.reset()
 
-        adapter = AppMetricaIronSourceAdapter(
+        adapter = AnalyticsIronSourceAdapter(
             ironSourceType: MockIronSource.self, appMetricaType: MockAppMetrica.self)
-        AppMetricaIronSourceAdapter._shared = adapter
+        AnalyticsIronSourceAdapter._shared = adapter
     }
 
     func testInitialization() async {
@@ -215,7 +215,7 @@ class AppMetricaIronSourceAdapterTests: XCTestCase {
     }
 
     func testDeinitializationRemovesDelegate() async throws {
-        var localAdapter: AppMetricaIronSourceAdapter? = AppMetricaIronSourceAdapter(
+        var localAdapter: AnalyticsIronSourceAdapter? = AnalyticsIronSourceAdapter(
             ironSourceType: MockIronSource.self, appMetricaType: MockAppMetrica.self)
         localAdapter?.initialize()
 
@@ -230,7 +230,7 @@ class AppMetricaIronSourceAdapterTests: XCTestCase {
     func testWillActivate() {
         // This method is empty in the implementation, but we should test it's called
         let configuration = ModuleActivationConfiguration(apiKey: "test-api-key")
-        AppMetricaIronSourceAdapter.willActivate(with: configuration)
+        AnalyticsIronSourceAdapter.willActivate(with: configuration)
         // No assertion needed as the method is empty, but we ensure it doesn't crash
     }
 
@@ -273,7 +273,7 @@ class AppMetricaIronSourceAdapterTests: XCTestCase {
         MockAppMetrica.setIsActivated(true)
 
         // Call didActivate
-        AppMetricaIronSourceAdapter.didActivate(with: configuration)
+        AnalyticsIronSourceAdapter.didActivate(with: configuration)
 
         // We need to wait for the async task to complete
         try await Task.sleep(nanoseconds: 100_000_000)
@@ -321,7 +321,7 @@ class AppMetricaIronSourceAdapterTests: XCTestCase {
         // Ensure no impression data is queued
         MockAppMetrica.setIsActivated(true)
 
-        AppMetricaIronSourceAdapter.didActivate(with: configuration)
+        AnalyticsIronSourceAdapter.didActivate(with: configuration)
 
         // We still need to wait for the async task to complete, even if it does nothing
         try await Task.sleep(nanoseconds: 100_000_000)
@@ -385,7 +385,7 @@ class AppMetricaIronSourceAdapterTests: XCTestCase {
         try await Task.sleep(nanoseconds: 500_000_000)
 
         MockAppMetrica.setIsActivated(true)
-        AppMetricaIronSourceAdapter.didActivate(with: ModuleActivationConfiguration(apiKey: "test-api-key"))
+        AnalyticsIronSourceAdapter.didActivate(with: ModuleActivationConfiguration(apiKey: "test-api-key"))
 
         try await processingTask.value
 
@@ -442,10 +442,10 @@ class AppMetricaIronSourceAdapterTests: XCTestCase {
     }
 
     func testMemoryLeakInAdapter() {
-        weak var weakAdapter: AppMetricaIronSourceAdapter?
+        weak var weakAdapter: AnalyticsIronSourceAdapter?
 
         autoreleasepool {
-            let localAdapter = AppMetricaIronSourceAdapter(
+            let localAdapter = AnalyticsIronSourceAdapter(
                 ironSourceType: MockIronSource.self, appMetricaType: MockAppMetrica.self)
             weakAdapter = localAdapter
             localAdapter.initialize()
