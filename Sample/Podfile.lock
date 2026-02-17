@@ -1,68 +1,68 @@
 PODS:
-  - AppMetricaCore (6.0.0):
-    - AppMetricaCoreUtils (= 6.0.0)
-    - AppMetricaEncodingUtils (= 6.0.0)
-    - AppMetricaFMDB (= 6.0.0)
-    - AppMetricaHostState (= 6.0.0)
-    - AppMetricaIdentifiers (= 6.0.0)
-    - AppMetricaKeychain (= 6.0.0)
-    - AppMetricaLog (= 6.0.0)
-    - AppMetricaNetwork (= 6.0.0)
-    - AppMetricaPlatform (= 6.0.0)
-    - AppMetricaProtobuf (= 6.0.0)
-    - AppMetricaProtobufUtils (= 6.0.0)
-    - AppMetricaStorageUtils (= 6.0.0)
-  - AppMetricaCoreExtension (6.0.0):
-    - AppMetricaCore (= 6.0.0)
-    - AppMetricaStorageUtils (= 6.0.0)
-  - AppMetricaCoreUtils (6.0.0):
-    - AppMetricaLog (= 6.0.0)
-  - AppMetricaEncodingUtils (6.0.0):
-    - AppMetricaCoreUtils (= 6.0.0)
-    - AppMetricaLog (= 6.0.0)
-    - AppMetricaPlatform (= 6.0.0)
-  - AppMetricaFMDB (6.0.0)
-  - AppMetricaHostState (6.0.0):
-    - AppMetricaCoreUtils (= 6.0.0)
-    - AppMetricaLog (= 6.0.0)
-  - AppMetricaIdentifiers (6.0.0):
-    - AppMetricaKeychain (= 6.0.0)
-    - AppMetricaLogSwift (= 6.0.0)
-    - AppMetricaPlatform (= 6.0.0)
-    - AppMetricaStorageUtils (= 6.0.0)
-    - AppMetricaSynchronization (= 6.0.0)
-  - AppMetricaIronSourceAdapter (2.1.0):
-    - AppMetricaIronSourceAdapter/Core (= 2.1.0)
-  - AppMetricaIronSourceAdapter/Core (2.1.0):
+  - AppMetricaCore (6.1.0):
+    - AppMetricaCoreUtils (= 6.1.0)
+    - AppMetricaEncodingUtils (= 6.1.0)
+    - AppMetricaFMDB (= 6.1.0)
+    - AppMetricaHostState (= 6.1.0)
+    - AppMetricaIdentifiers (= 6.1.0)
+    - AppMetricaKeychain (= 6.1.0)
+    - AppMetricaLog (= 6.1.0)
+    - AppMetricaNetwork (= 6.1.0)
+    - AppMetricaPlatform (= 6.1.0)
+    - AppMetricaProtobuf (= 6.1.0)
+    - AppMetricaProtobufUtils (= 6.1.0)
+    - AppMetricaStorageUtils (= 6.1.0)
+  - AppMetricaCoreExtension (6.1.0):
+    - AppMetricaCore (= 6.1.0)
+    - AppMetricaStorageUtils (= 6.1.0)
+  - AppMetricaCoreUtils (6.1.0):
+    - AppMetricaLog (= 6.1.0)
+  - AppMetricaEncodingUtils (6.1.0):
+    - AppMetricaCoreUtils (= 6.1.0)
+    - AppMetricaLog (= 6.1.0)
+    - AppMetricaPlatform (= 6.1.0)
+  - AppMetricaFMDB (6.1.0)
+  - AppMetricaHostState (6.1.0):
+    - AppMetricaCoreUtils (= 6.1.0)
+    - AppMetricaLog (= 6.1.0)
+  - AppMetricaIdentifiers (6.1.0):
+    - AppMetricaKeychain (= 6.1.0)
+    - AppMetricaLogSwift (= 6.1.0)
+    - AppMetricaPlatform (= 6.1.0)
+    - AppMetricaStorageUtils (= 6.1.0)
+    - AppMetricaSynchronization (= 6.1.0)
+  - AppMetricaIronSourceAdapter (3.0.0):
+    - AppMetricaIronSourceAdapter/Core (= 3.0.0)
+  - AppMetricaIronSourceAdapter/Core (3.0.0):
     - AppMetricaCore (~> 6.0)
     - AppMetricaCoreExtension (~> 6.0)
     - AppMetricaLog (~> 6.0)
     - AppMetricaLogSwift (~> 6.0)
     - IronSourceSDK (~> 9.0)
-  - AppMetricaIronSourceAdapter/Tests (2.1.0):
+  - AppMetricaIronSourceAdapter/Tests (3.0.0):
     - AppMetricaIronSourceAdapter/Core
-  - AppMetricaKeychain (6.0.0):
-    - AppMetricaCoreUtils (= 6.0.0)
-    - AppMetricaLog (= 6.0.0)
-    - AppMetricaStorageUtils (= 6.0.0)
-  - AppMetricaLog (6.0.0)
-  - AppMetricaLogSwift (6.0.0):
-    - AppMetricaLog (= 6.0.0)
-  - AppMetricaNetwork (6.0.0):
-    - AppMetricaCoreUtils (= 6.0.0)
-    - AppMetricaLog (= 6.0.0)
-    - AppMetricaPlatform (= 6.0.0)
-  - AppMetricaPlatform (6.0.0):
-    - AppMetricaCoreUtils (= 6.0.0)
-    - AppMetricaLog (= 6.0.0)
-  - AppMetricaProtobuf (6.0.0)
-  - AppMetricaProtobufUtils (6.0.0):
-    - AppMetricaProtobuf (= 6.0.0)
-  - AppMetricaStorageUtils (6.0.0):
-    - AppMetricaCoreUtils (= 6.0.0)
-    - AppMetricaLog (= 6.0.0)
-  - AppMetricaSynchronization (6.0.0):
-    - AppMetricaLogSwift (= 6.0.0)
+  - AppMetricaKeychain (6.1.0):
+    - AppMetricaCoreUtils (= 6.1.0)
+    - AppMetricaLog (= 6.1.0)
+    - AppMetricaStorageUtils (= 6.1.0)
+  - AppMetricaLog (6.1.0)
+  - AppMetricaLogSwift (6.1.0):
+    - AppMetricaLog (= 6.1.0)
+  - AppMetricaNetwork (6.1.0):
+    - AppMetricaCoreUtils (= 6.1.0)
+    - AppMetricaLog (= 6.1.0)
+    - AppMetricaPlatform (= 6.1.0)
+  - AppMetricaPlatform (6.1.0):
+    - AppMetricaCoreUtils (= 6.1.0)
+    - AppMetricaLog (= 6.1.0)
+  - AppMetricaProtobuf (6.1.0)
+  - AppMetricaProtobufUtils (6.1.0):
+    - AppMetricaProtobuf (= 6.1.0)
+  - AppMetricaStorageUtils (6.1.0):
+    - AppMetricaCoreUtils (= 6.1.0)
+    - AppMetricaLog (= 6.1.0)
+  - AppMetricaSynchronization (6.1.0):
+    - AppMetricaLogSwift (= 6.1.0)
   - IronSourceAdQualitySDK (9.0.2)
   - IronSourceSDK (9.0.0.0):
     - IronSourceSDK/AdQuality (= 9.0.0.0)
@@ -134,23 +134,23 @@ EXTERNAL SOURCES:
     :path: "../../../public"
 
 SPEC CHECKSUMS:
-  AppMetricaCore: dae62fe7f95cd665b142218f3d94cf63262c195b
-  AppMetricaCoreExtension: 72da13ba849d4676f276ab86ff429bdf700eadc3
-  AppMetricaCoreUtils: 5e7c91cbafe0225dec2ded2bb3a806256e2ef791
-  AppMetricaEncodingUtils: a67df57f752dbbb174beea18f1de52d24853d834
-  AppMetricaFMDB: a3d8e45a5a85bec23a997be4469b92ab355a4df5
-  AppMetricaHostState: 1ac2ab5880aa30a358f55a044e57354dd8f9062f
-  AppMetricaIdentifiers: 00061e0cdcb371b74343a5491f54adfc1d470b25
-  AppMetricaIronSourceAdapter: 2c18dccc9c469b8063e29b8452f0e2607f3d9e72
-  AppMetricaKeychain: 9ec64d877b8a3f6e823f3bbeef5e4086aa456686
-  AppMetricaLog: edd74df81c7557439c36c566989982f4c735e4d6
-  AppMetricaLogSwift: 3d2d4a3cbc33a680389b416a1c6a82ef4134da10
-  AppMetricaNetwork: 3dc6d768d4e932c3697c9c2c9a768de54e62059b
-  AppMetricaPlatform: 041a7b251ea1689e26626d9db8f331af1afe5bad
-  AppMetricaProtobuf: 01b141a164fa7277f641a29f30d5e571ea3d471a
-  AppMetricaProtobufUtils: dc48c7b84f3a1ef86ea218bbd97480ea9da4d3bc
-  AppMetricaStorageUtils: 78071115b9f5468d9e3b8184c456428cd9ee1dbd
-  AppMetricaSynchronization: 909bab97c61c0c147a435ce1620e4c8069e2d6b3
+  AppMetricaCore: 3393a79e2a8ecc6ab9771836b57756d7b23c7f32
+  AppMetricaCoreExtension: eadaf054b3a0828fc18d2fa6317dd2f2c40fa14b
+  AppMetricaCoreUtils: c2f90bbabca393e82296c1fb487756cbb6a67a04
+  AppMetricaEncodingUtils: 1ac3d4907dbdc87a0be5cf3603629cc27d82def7
+  AppMetricaFMDB: c8023e9caceb69681c59c244cfee28c13ce2188e
+  AppMetricaHostState: c3d737e35ba37b56d32b2e5e18d290065567c045
+  AppMetricaIdentifiers: fd85cf46041b109eb7751513925b8bbd12b0a992
+  AppMetricaIronSourceAdapter: e2ecc4e717ad69e21b5d41a133d41614790ea863
+  AppMetricaKeychain: 88cfdc958c65951c4caff601df4186008dfb1dee
+  AppMetricaLog: f6699a4d3af5e41f7bbcf066481045f78236ca0d
+  AppMetricaLogSwift: ec4fe7eb97b3f6bc4be0cc3a1a62a2212684e4c6
+  AppMetricaNetwork: 8723641c961ac090eaa7c72030accfb9e1b0f6e5
+  AppMetricaPlatform: e7e361f90ce1c69bea7fa5af622fb4ad68b4160e
+  AppMetricaProtobuf: 874a97cde1329da554876b6c3b7b641abaabdfb5
+  AppMetricaProtobufUtils: cf9dcc7ec1bc552be17dce2a208b6808952ae75d
+  AppMetricaStorageUtils: a32543471f8ae2dd4838b7439eb667c1736efb7e
+  AppMetricaSynchronization: 99987d2d7d73c486a07ee24191252642c82c1ff2
   IronSourceAdQualitySDK: b34d46a52db89ac9d9d4169ceb41f44421e07606
   IronSourceSDK: b64660084bc4b162f30a4e846f7b763ce0074664
 
