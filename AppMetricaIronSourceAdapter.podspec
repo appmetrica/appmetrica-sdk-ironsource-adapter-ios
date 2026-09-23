@@ -7,7 +7,7 @@ Pod::Spec.new do |s|
   s.author           = { 'AppMetrica' => 'admin@appmetrica.io' }
   s.source           = { :git => 'https://github.com/appmetrica/appmetrica-sdk-ironsource-adapter-ios.git', :tag => s.version.to_s }
 
-  s.ios.deployment_target = '13.0'
+  s.ios.deployment_target = '15.0'
   s.static_framework = true
   
   s.swift_version = '5.5'
